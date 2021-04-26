@@ -1,0 +1,42 @@
+<html lang="en">
+
+<body>
+<div class="box">
+      <p style="font-size: 40px;"><%= todo.item %></p>
+    </div>
+    <a class="delete" data-doc="<%= todo._id %>">
+      <img src="/trashcan.svg" alt="delete icon">
+    </a>
+<style>
+     .box{
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .delete{
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 50%;
+      padding: 8px;
+    }
+    .delete:hover{
+      cursor: pointer;
+      box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+    }
+</style>
+  <script>
+    const trashcan = document.querySelector('a.delete');
+    trashcan.addEventListener('click', (e) => {
+      const endpoint = `/item/${trashcan.dataset.doc}`;
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+    
+  </script>
+</body>
+</html>

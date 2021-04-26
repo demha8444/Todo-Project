@@ -1,0 +1,104 @@
+<html lang="en">
+
+
+<body>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+  <title>Todo Project</title>
+ <h1 class="todo-top">To-do App</h1>
+<form action="/" method="POST">
+  <input type="text" id="item" name="item" class="todo-input" required>
+  <button class="todo-sumbit">Submit</button>
+</form>
+
+<% if (todos.length > 0) { %>
+  <% todos.forEach(todo => { %>
+    <div class="over-item">
+      <a class="single" href="/item/<%= todo._id %>">
+ <h3 class="item"><%= todo.item %></h3>
+    </a>
+  </div>
+  <% }) %>
+<% } else { %>
+  <p class="nothingtodo">Have anything to do?</p>
+<% } %>
+
+<style>
+  .single :hover{
+  color: green;
+  cursor: pointer;
+
+  }
+  .single{
+    text-decoration: none;
+    color: black;
+  }
+      .delete{
+      position: absolute;
+      right: 0;
+      border-radius: 50%;
+      padding: 8px;
+    }
+    
+  .nothingtodo{
+    display: flex;
+  justify-content: center;
+  }
+.over-item{
+  height: 1%;
+  margin-top: 4%;
+}
+
+.item{
+  height: 1%;
+  display: flex;
+  justify-content: center;
+  width: auto;
+  background-color: black;
+  text-decoration: none;
+}
+
+
+.todo-top{
+  text-align: center;
+  font-family: 'Comfortaa', cursive;
+  font-weight: 1px; 
+}
+
+.todo-input {
+  margin: 0 auto;
+  border: black;
+  border-radius: 0;
+  background-color: rgb(154, 233, 102);
+  width: 60%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  outline:none;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-sumbit {
+  padding: 10px;
+  width: 20%;
+  background: rgb(20, 120, 160);
+  color: white ;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: none;
+  outline:none;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+body{
+  background-color: rgb(98, 228, 189);
+}
+</style>
+</body>
+</html>
